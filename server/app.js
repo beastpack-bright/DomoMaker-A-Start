@@ -27,9 +27,7 @@ app.use(session({
 
 }));
 
-app.engine('handlebars', expressHandlebars.engine({ defaultLayout: ''}));
-
-
+app.engine('handlebars', expressHandlebars.engine({ defaultLayout: '' }));
 
 app.use(helmet());
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));

@@ -8,8 +8,8 @@ const signupPage = (req, res) => res.render('signup');
 
 const logout = (req, res) => {
   req.session.destroy();
-res.redirect('/');
-}
+  res.redirect('/');
+};
 
 const login = (req, res) => {
   const username = `${req.body.username}`;
@@ -43,7 +43,7 @@ const signup = async (req, res) => {
     const hash = await Account.generateHash(pass);
     const newAccount = new Account({ username, password: hash });
     await newAccount.save();
-    req.session.account = Account.toAPI(newAccount)
+    req.session.account = Account.toAPI(newAccount);
     return res.json({ redirect: '/maker' });
   } catch (err) {
     console.log(err);
