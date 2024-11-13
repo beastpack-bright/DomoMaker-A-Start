@@ -18,7 +18,7 @@ mongoose.connect(dbURI).catch((err) => {
     throw err;
   }
 });
-
+const app = express();
 app.use(session({
   key: 'sessionid',
   secret: 'Domo Arigato',
@@ -29,7 +29,7 @@ app.use(session({
 
 app.engine('handlebars', expressHandlebars.engine({ defaultLayout: ''}));
 
-const app = express();
+
 
 app.use(helmet());
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
